@@ -4,6 +4,7 @@ import DoctorController from './app/controllers/DoctorController';
 
 const routes = new Router();
 
+routes.get('/', DoctorController.index);
 routes.get('/doctors', DoctorController.index);
 routes.get('/doctors/:id', DoctorController.show);
 routes.post('/doctors', DoctorController.insert);
