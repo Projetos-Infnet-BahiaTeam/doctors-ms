@@ -4,7 +4,7 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 
 import routes from './routes';
-import './app/database';
+import './database';
 
 require('dotenv').config();
 

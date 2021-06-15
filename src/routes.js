@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import DoctorController from './app/controllers/DoctorController';
+import DoctorController from './controllers/DoctorController';
 
 const routes = new Router();
 
