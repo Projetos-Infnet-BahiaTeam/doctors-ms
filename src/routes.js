@@ -4,8 +4,6 @@ import DoctorController from './controllers/DoctorController';
 
 const routes = new Router();
 
-routes.use('/api');
-
 /**
  * @swagger
  * components:
@@ -47,7 +45,7 @@ routes.use('/api');
 
 /**
  * @swagger
- * /doctors:
+ * /api/doctors:
  *   get:
  *     summary: Returns the list of all the doctors
  *     tags: [Doctors]
@@ -62,12 +60,12 @@ routes.use('/api');
  *                 $ref: '#/components/schemas/Doctor'
  */
 
-routes.get('/', DoctorController.index);
-routes.get('/doctors', DoctorController.index);
+routes.get('/api/', DoctorController.index);
+routes.get('/api/doctors', DoctorController.index);
 
 /**
  * @swagger
- * /doctors/{id}:
+ * /api/doctors/{id}:
  *   get:
  *     summary: Get the doctor by id
  *     tags: [Doctors]
@@ -89,11 +87,11 @@ routes.get('/doctors', DoctorController.index);
  *         description: The doctor was not found
  */
 
-routes.get('/doctors/:id', DoctorController.show);
+routes.get('/api/doctors/:id', DoctorController.show);
 
 /**
  * @swagger
- * /doctors:
+ * /api/doctors:
  *   post:
  *     summary: Create a new doctor
  *     tags: [Doctors]
@@ -114,11 +112,11 @@ routes.get('/doctors/:id', DoctorController.show);
  *         description: Some server error
  */
 
-routes.post('/doctors', DoctorController.insert);
+routes.post('/api/doctors', DoctorController.insert);
 
 /**
  * @swagger
- * /doctors/{id}:
+ * /api/doctors/{id}:
  *  put:
  *    summary: Update the doctor by the id
  *    tags: [Doctors]
@@ -148,11 +146,11 @@ routes.post('/doctors', DoctorController.insert);
  *        description: Some error happened
  */
 
-routes.put('/doctors', DoctorController.update);
+routes.put('/api/doctors', DoctorController.update);
 
 /**
  * @swagger
- * /doctors/{id}:
+ * /api/doctors/{id}:
  *   delete:
  *     summary: Remove the doctor by id
  *     tags: [Doctors]
@@ -170,6 +168,6 @@ routes.put('/doctors', DoctorController.update);
  *       404:
  *         description: The doctor was not found
  */
-routes.delete('/doctors/:id', DoctorController.delete);
+routes.delete('/api/doctors/:id', DoctorController.delete);
 
 export default routes;
