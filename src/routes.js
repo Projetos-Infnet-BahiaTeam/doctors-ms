@@ -4,6 +4,8 @@ import DoctorController from './controllers/DoctorController';
 
 const routes = new Router();
 
+routes.use('/api');
+
 /**
  * @swagger
  * components:
