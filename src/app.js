@@ -1,10 +1,12 @@
 import express from 'express';
-import routes from './routes';
 import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 
-import './config/connection';
+import routes from './routes';
+import './app/database';
+
+require('dotenv').config();
 
 class App{
     constructor(){
@@ -27,24 +29,26 @@ class App{
     }
 
     swagger(){
-        const options = {
-            definition: {
-                openapi: "3.0.0",
-                info: {
-                    title: "Library API",
-                    version: "1.0.0",
-                    description: "A simple Express Library API",
-                },
-                servers: [
-                    {
-                        url: "http://localhost:8080",
-                    },
-                ],
-            },
-            apis: ["./src/routes.js"],
-        };
-        const specs = swaggerJsDoc(options);
-        this.app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+      const port = process.env.SERVER_PORT
+      const host = process.env.SERVER_HOST
+      const options = {
+          definition: {
+              openapi: "3.0.0",
+              info: {
+                  title: "Library API",
+                  version: "1.0.0",
+                  description: "A simple Express Library API",
+              },
+              servers: [
+                  {
+                      url: `http://${host}:${port}`,
+                  },
+              ],
+          },
+          apis: ["./src/routes.js"],
+      };
+      const specs = swaggerJsDoc(options);
+      this.app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
     }
    
     routes(){

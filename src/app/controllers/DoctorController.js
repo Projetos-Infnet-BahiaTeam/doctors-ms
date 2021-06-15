@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
-import Doctor from '../models/Doctor';
+
+import Doctor from '../schemas/Doctor';
 
 class DoctorController {
-
     async index(req, res) {
         const { page = 1 } = req.query;
         const { limit = 40 } = req.query;
@@ -37,7 +37,6 @@ class DoctorController {
     };
 
     async insert(req, res) {
-
         const schema = Yup.object().shape({
             doctor: Yup.string().required(),
             uf: Yup.string().required(),
@@ -80,7 +79,6 @@ class DoctorController {
     };
 
     async update(req, res) {
- 
         const { _id, crm }= req.body;
 
         const doctorDb = await Doctor.findOne({_id: _id});
